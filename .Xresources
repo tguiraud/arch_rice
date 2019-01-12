@@ -17,5 +17,5 @@
 *.color15: #ebdbb2
 !! Transparency (0-255):
 st.alpha: 230
-!! Set a default font and font size as below:
-!! *.font: Monospace-14;
+!! Set a default font and font size as below: <seems to not do anything>
+!!*.font: Monospace-14;
