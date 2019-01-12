@@ -1,0 +1,6 @@
+input:not(.urlbar-input):not(.textbox-input):not(.form-control):not([type='checkbox']):not([type='radio']), textarea, select {
+    -moz-appearance: none !important;
+    background-color: #eee;
+    color: #111;
+}
+
