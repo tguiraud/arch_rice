@@ -1,0 +1,4 @@
+#!/bin/bash
+pushd ~/homepage && git add . -A && git commit -a -m 'quicksync' && git push; ssh ubuntu@35.157.226.138 'cd homepage && git pull origin master' && popd;
+
+

@@ -1,0 +1,4 @@
+macro index,pager i1 '<sync-mailbox><enter-command>source "/home/jny/.config/mutt"/accounts/jj95io.muttrc<enter><change-folder>!<enter>;<check-stats>'
+source /home/jny/.config/mutt/accounts/jj95io.muttrc
+macro index,pager i2 '<sync-mailbox><enter-command>source "/home/jny/.config/mutt"/accounts/jwill_tub.muttrc<enter><change-folder>!<enter>;<check-stats>'
+macro index,pager i3 '<sync-mailbox><enter-command>source "/home/jny/.config/mutt"/accounts/j95will.muttrc<enter><change-folder>!<enter>;<check-stats>'

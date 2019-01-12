@@ -1,0 +1,123 @@
+# vim: filetype=neomuttrc
+# This is the general mutt config which has the settings that all accounts use.
+
+bind index,pager i noop
+bind index,pager g noop
+bind index,pager z noop
+bind index \Cf noop
+source etc/muttcol
+source etc/aliases
+
+set sleep_time = 0
+set sort = 'reverse-date'
+set editor = $EDITOR
+#set copy = no
+set timeout = "5"
+set mail_check = "10"
+set mailcap_path = ~/.config/mutt/etc/mailcap
+set date_format="%y/%m/%d %I:%M"
+set index_format="%2C %zs %?X?A& ? %D %-15.15F %s (%-4.4c)"
+#set markers = no
+set markers = yes
+set mark_old = no
+set mime_forward = yes
+set smtp_authenticators = 'gssapi:login'
+set wait_key = no
+auto_view text/html
+#macro attach 'V' "<pipe-entry>cat >~/.cache/mutt/mail.html && $BROWSER ~/.cache/mutt/mail.html && rm ~/.cache/mutt/mail.html<enter>"
+auto_view application/pgp-encrypted
+alternative_order text/plain text/enriched text/html
+set rfc2047_parameters = yes
+set auto_tag = yes  # apply operations to all tagged without pressing ';' first
+
+# Color marking
+folder-hook . "color index black yellow ~T"  # Mark tagged messages colored
+
+# General remappings
+bind editor <space> noop
+bind index <space> tag-entry
+bind index G last-entry
+bind index gg first-entry
+bind pager j next-line
+bind pager k previous-line
+bind pager gg top
+bind pager G bottom
+bind attach,pager h exit
+bind index h noop  # remove binding: display-toggle-weed
+bind index l display-message
+bind index d half-down
+bind index u half-up
+bind index D delete-message
+bind index U undelete-message
+#bind index f search
+bind index f limit  # only how messges containing ...
+bind index / search  # look for ..., jump between results with n/N
+bind index,pager R group-reply
+bind index,pager \031 previous-undeleted # Mouse wheel
+bind index,pager \005 next-undeleted # Mouse wheel
+
+bind index,pager zr display-toggle-weed
+macro index,pager S <sync-mailbox>
+macro index,pager \Cu |urlscan\n
+macro index,pager ,, |urlscan\n
+
+# View attachments properly.
+bind attach <return> view-mailcap
+bind attach l view-mailcap
+set fast_reply           # skip to compose when replying
+set fcc_attach           # save attachments with the body
+unset mime_forward       # forward attachments as part of body
+set forward_format = "Fwd: %s"       # format of subject when forwarding
+set forward_decode                   # decode when forwarding
+set forward_quote                    # include message in forwards
+set reverse_name                     # reply as whomever it was to
+set include                          # include message in replies
+
+#Ctrl-R to mark all as read
+macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
+
+#sync email
+macro index O "<shell-escape>$HOME/.config/mutt/etc/mailsync.sh<enter>" "run offlineimap to sync all mail"
+macro index o "<shell-escape>$HOME/.config/mutt/etc/mailsync.sh -qf INBOX<enter>" "run offlineimap to sync inbox"
+
+#copy/move dialogs
+macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
+macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+
+# Notmuch searching
+macro index \Cf "<enter-command>unset wait_key<enter><shell-escape>read -p 'notmuch query: ' x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | perl -le '@a=<>;chomp@a;s/\^id:// for@a;$,=\"|\";print@a'\`\"<enter>" "show only messages matching a notmuch pattern"
+macro index A "<limit>all\n" "show all messages (undo limit)"
+
+# Sidebar mappings
+set sidebar_visible = yes
+set sidebar_width = 20
+set sidebar_short_path = yes
+set sidebar_next_new_wrap = yes
+set mail_check_stats
+set sidebar_format = '%B%?F? [%F]?%* %?N?%N/? %?S?%S?'
+bind index,pager \CK sidebar-prev
+bind index,pager \CJ sidebar-next
+macro index,pager K "\CKL"
+macro index,pager J "\CJL"
+bind index,pager L sidebar-open
+bind index,pager \Cp sidebar-prev-new  # Only move to mailboxes with new mail
+bind index,pager \Cn sidebar-next-new
+#bind index,pager B sidebar-toggle-visible
+
+# See archwiki mutt - multiple accounts. separation of configs
+source accounts/jwill_tub.muttrc  # Add the mail accounts manually
+source accounts/j95will.muttrc  # Add the mail accounts manually
+source accounts/jj95io.muttrc  # Add the mail accounts manually
+# The following folder hooks worked in the previous rice, but now reload everything all the time.
+# remove them after the current setup has worked for a while
+#folder-hook $folder 'source ~/.config/mutt/accounts/jwill_tub.muttrc'
+#folder-hook '~/.mail/j95will_gmail' 'source ~/.config/mutt/accounts/j95will.muttrc'
+#folder-hook '~/.mail/jj95io' 'source ~/.config/mutt/accounts/jj95io.muttrc'
+
+#source personal.muttrc
+
+## Shortcuts to switch between email accounts
+macro index,pager <f2> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/jwill_tub.muttrc<enter><change-folder>!<enter>'
+macro index,pager <f3> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/j95will.muttrc<enter><change-folder>!<enter>'
+macro index,pager <f4> '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/jj95io.muttrc<enter><change-folder>!<enter>'
+

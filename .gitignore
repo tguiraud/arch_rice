@@ -1,0 +1,10 @@
+documents
+downloads
+pictures
+homepage
+abc.py
+.mozilla/*
+*.log*
+*-errors*
+
+

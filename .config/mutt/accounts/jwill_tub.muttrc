@@ -1,0 +1,29 @@
+# vim: filetype=neomuttrc
+# muttrc file for account jwill_tub
+set realname = "Jonathan Samuel Will"
+set from = "j.will@win.tu-berlin.de"
+set sendmail = "/usr/bin/msmtp -a jwill_tub"
+set folder = "~/.mail/jwill_tub"
+set header_cache = ~/.config/mutt/accounts/jwill_tub/cache/headers
+set message_cachedir = ~/.config/mutt/accounts/jwill_tub/cache/bodies
+set certificate_file = ~/.config/mutt/accounts/jwill_tub/certificates
+source "~/.config/mutt/credentials/getmuttpass jwill_tub |"
+
+alias me Jonathan Samuel Will <j.will@win.tu-berlin.de>
+
+set mbox_type = Maildir
+set ssl_starttls = yes
+set ssl_force_tls = yes
+
+bind index,pager gg noop
+bind index,pager g noop
+bind index gg first-entry
+unmailboxes *
+mailboxes =jwill_tub =------------------- "=Notes" "=Drafts" "=Remember" "=Contacts" "=INBOX" "=Junk Email" "=Outbox" "=Calendar" "=Journal" "=Sent Items" "=Deleted Items" "=Tasks"
+macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox."
+macro index,pager gs "<change-folder>=Sent Items<enter>" "Go to sent."
+macro index,pager gd "<change-folder>=Drafts<enter>" "Go to drafts."
+set spoolfile = "+INBOX"
+set record = "+Sent Items"
+set postponed = "+Drafts"
+set trash = ""
