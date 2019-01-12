@@ -30,9 +30,7 @@
     Plug 'scrooloose/nerdtree'
     Plug 'vim-syntastic/syntastic'
 	" Color schemes
-	Plug 'dracula/vim'
 	Plug 'morhetz/gruvbox'
-	Plug 'cocopon/iceberg.vim'
     call plug#end()
 
 " Settings
@@ -40,9 +38,6 @@
 		syntax on
 		color gruvbox
 		let g:gruvbox_contrast_dark = 'hard'
-		"color dracula
-		"color iceberg
-		"set background=dark  " calling this last makes it a bit darker
 
     "" Map leader to ,
 		let mapleader=','
@@ -132,7 +127,7 @@
 	    autocmd Filetype markdown nnoremap gcp :w<Enter>:!pandoc<space><C-r>%<space>-t<space>beamer<space>-o<space><C-r>%<Delete><Delete><Delete>_pres.pdf<Enter><Enter>
 	    " generate a html file in Latex style. remove the .md and put .html
 		" and sync the qvacz server with local data
-	    autocmd Filetype markdown nnoremap gch :w<Enter>:!pandoc<space><C-r>%<space>-t<space>html5<space>-o<space><C-r>%<Delete><Delete><Delete>.html<space>&&<space>bash<space>~/.scripts/run_in_background.sh<space>"bash<space>~/.scripts/sync_qvacz.sh"<Enter><Enter>
+	    autocmd Filetype markdown nnoremap gch :w<Enter>:!pandoc<space><C-r>%<space>-t<space>html5<space>-o<space><C-r>%<Delete><Delete><Delete>.html<space>&&<space>bash<space>~/.scripts/run_in_background.sh<space>"bash<space>~/.scripts/sync_homepage.sh"<Enter><Enter>
 
 	    autocmd Filetype markdown nnoremap <leader>1 0o<Esc>i-<space><1><space>
 	    autocmd Filetype markdown nnoremap <leader>2 0o<Esc>i-<space><2><space>

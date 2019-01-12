@@ -1,14 +1,13 @@
 #!/bin/bash
-stty -ixon # Disable ctrl-s and ctrl-q.
-shopt -s autocd #Allows you to cd into directory merely by typing the directory name.
 HISTSIZE= HISTFILESIZE= # Infinite history.
 export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
 
-[ -f "$HOME/.shortcuts" ] && source "$HOME/.shortcuts" # Load shortcut aliases
+#[ -f "$HOME/.shortcuts" ] && source "$HOME/.shortcuts" # Load shortcut aliases
 
 # Vim-mode in terminal emulator
 set -o vi
 
+# --- Shortcuts and aliases --- #
 
 # System Maintainence
 alias mw="~/.config/mutt/mutt-wizard.sh"
@@ -21,6 +20,32 @@ alias ref="shortcuts >/dev/null ; source ~/.bashrc" # Refresh shortcuts manually
 alias mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)"
 alias x="sxiv -ft *"
 alias lp="pacman -Qett --color=always | less"
+
+# Editing j95.io files
+alias todo="nvim ~/homepage/todo/todo.md"
+
+# SSH
+alias sshh="ssh j@j95.io"
+
+# Editing config files
+alias h="cd ~/ && ls -a"
+alias cf="cd ~/.config && ls -a"
+alias sc="cd ~/.scripts && ls -a"
+alias mn="cd /mnt && ls -a"
+alias vbc="$EDITOR ~/.bashrc; source ~/.bashrc; echo 'sourced new .bashrc'"
+alias vzc="$EDITOR ~/.zshrc"
+alias vvc="$EDITOR ~/.config/nvim/init.vim"
+alias vrc="$EDITOR ~/.config/ranger/rc.conf"
+alias vic="$EDITOR ~/.config/i3/config"
+alias vmc="$EDITOR ~/.config/mutt/muttrc"
+alias vnu="$EDITOR ~/.config/newsboat/urls"
+alias vnc="$EDITOR ~/.config/newsboat/config"
+alias vac="$EDITOR ~/.asoundrc"
+
+alias cfmb="$EDITOR ~/.config/ncmpcpp/bindings"
+alias cfmc="$EDITOR ~/.config/ncmpcpp/config"
+alias cfmpd="$EDITOR ~/.config/mpd/mpd.conf"
+alias cfM="$EDITOR ~/.config/mpd/mpd.conf"
 
 # Adding color
 alias ls='ls -hN --color=auto --group-directories-first'

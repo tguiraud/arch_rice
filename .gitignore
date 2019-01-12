@@ -2,9 +2,40 @@ documents
 downloads
 pictures
 homepage
+
+#single files
 abc.py
+.ipynb_checkpoints
+.gitconfig
+
+
+# ever changing minor config / data files
+.cache
 .mozilla/*
 *.log*
 *-errors*
+.mail
+.python_history
+.jupyter
+.lesshst
+.local/*
+.ipython
+.Xauthority
+.calcurse/*
+.config/mpd/*
+.config/neofetch/*
+.config/nvim/*
+.config/pulse
+.config/vifm
+
+# Secret dirs
+.bash_history
+.ssh
+.gnupg
+.esd_auth
+.msmtprc
+.offlineimaprc
+.offlineimap/*
+
 
 
