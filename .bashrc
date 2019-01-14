@@ -22,10 +22,14 @@ alias x="sxiv -ft *"
 alias lp="pacman -Qett --color=always | less"
 
 # Editing j95.io files
-alias todo="nvim ~/homepage/todo/todo.md"
+alias todo="nvim ~/documents/todo/todo.md"
+
+# Apps
+alias pyt="nvim ~/projects/test.py"
+alias py="pushd ~/projects && nvim test_temp.py && rm test_temp.py; popd"
 
 # SSH
-alias sshh="ssh j@j95.io"
+alias sshh="ssh django@j95.io"
 
 # Editing config files
 alias h="cd ~/ && ls -a"

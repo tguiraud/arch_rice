@@ -1,3 +1,6 @@
+/* Fix colors for input fields, used to be black input box on black/dark text */
+/* I think the reason was a local linux-related theme */
+/* I was able to test this in DDG's colorpicker */
 input:not(.urlbar-input):not(.textbox-input):not(.form-control):not([type='checkbox']):not([type='radio']), textarea, select {
     -moz-appearance: none !important;
     background-color: #eee;

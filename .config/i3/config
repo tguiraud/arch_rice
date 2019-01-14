@@ -282,4 +282,4 @@ exec --no-startup-id lukescripts
 exec_always --no-startup-id notify-send -i ~/.scripts/pix/larbs.png '<b>Welcome to Arch:</b> Press Super+F1 for the manual.' -t 10000
 
 exec xinput --disable 10  # disbale trackpad
-exec setxkbmap -layout us -variant altgr-intl  # Set keyboard to US-intl
+

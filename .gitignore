@@ -1,7 +1,10 @@
 documents
 downloads
 pictures
-homepage
+homepage_old
+projects
+uni
+
 
 #single files
 abc.py
@@ -36,6 +39,7 @@ abc.py
 .msmtprc
 .offlineimaprc
 .offlineimap/*
+.config/mutt/accounts/*
 
 
 
